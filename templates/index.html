@@ -66,7 +66,7 @@ $(document).ready(function() {
         query = $("[name='query']").val();
 
         $.ajax({
-            url: '/',
+            url: '/search',
             type: 'POST',
             dataType: 'json',
             data: {q: query},
@@ -77,7 +77,6 @@ $(document).ready(function() {
                     var $doc = $('<div class="doc"><h3></h3><div class="link"></div><div class="content"></div><div class="categories"></div></div>');
                     $doc.find("h3").html(doc.highlight.title[0]);
                     $doc.find(".link").html('<a href="' + doc._source.url + '" target="_blank">' + doc._source.url + '</a>');
-                    // $doc.find(".content").text(doc._source.content.substring(0, 200) + '...');
                     doc.highlight.content.forEach(function(part) {
                         $doc.find(".content").append(part);
                     });
